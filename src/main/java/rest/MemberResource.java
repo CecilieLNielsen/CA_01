@@ -30,7 +30,7 @@ public class MemberResource {
         return "{\"msg\":\"Hello World\"}";
     }
     
-    @Path("all")
+    @Path("/all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAll(){
