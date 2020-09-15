@@ -2,8 +2,10 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.MemberDTO;
 import utils.EMF_Creator;
-import facades.FacadeExample;
+import facades.MemberFacade;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,15 +13,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 //Todo Remove or change relevant parts before ACTUAL use
-@Path("xxx")
-public class RenameMeResource {
+@Path("groupmembers")
+public class MemberResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
     
     //An alternative way to get the EntityManagerFactory, whithout having to type the details all over the code
     //EMF = EMF_Creator.createEntityManagerFactory(DbSelector.DEV, Strategy.CREATE);
     
-    private static final FacadeExample FACADE =  FacadeExample.getFacadeExample(EMF);
+    private static final MemberFacade FACADE =  MemberFacade.getMemberFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
             
     @GET
@@ -27,6 +29,16 @@ public class RenameMeResource {
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
+    
+    @Path("all")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getAll(){
+        List<MemberDTO> allMembers = FACADE.getAllMembers();
+        return GSON.toJson(allMembers);
+    }
+    
+    /*
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
@@ -35,4 +47,5 @@ public class RenameMeResource {
         //System.out.println("--------------->"+count);
         return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
     }
+    */
 }
