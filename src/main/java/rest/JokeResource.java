@@ -7,7 +7,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import dto.JokeDto;
+import dtos.JokeDTO;
 import entities.Joke;
 import facades.JokeFacade;
 import java.util.List;
