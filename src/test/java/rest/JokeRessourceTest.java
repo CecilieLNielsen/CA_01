@@ -26,7 +26,9 @@ import org.junit.jupiter.api.Test;
 
 
 
+
 public class JokeRessourceTest {
+
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
