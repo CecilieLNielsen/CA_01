@@ -30,9 +30,9 @@ public class MemberResource {
         return "{\"msg\":\"Hello World\"}";
     }
     
+
     @Path("all")
-    @GET
-    @Produces({MediaType.APPLICATION_JSON})
+
     public String getAll(){
         List<MemberDTO> allMembers = FACADE.getAllMembers();
         return GSON.toJson(allMembers);
