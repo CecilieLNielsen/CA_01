@@ -1,10 +1,12 @@
 package facades;
 
+import entities.Car;
 import entities.RenameMe;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -17,7 +19,6 @@ public class FacadeExample {
     
     //Private Constructor to ensure Singleton
     private FacadeExample() {}
-    
     
     /**
      * 
@@ -37,15 +38,15 @@ public class FacadeExample {
     }
     
     //TODO Remove/Change this before use
-    public long getRenameMeCount(){
-        EntityManager em = emf.createEntityManager();
+    public List<Car> getAllCars(){
+        EntityManager em = getEntityManager();
+        List<Car> cars;
         try{
-            long renameMeCount = (long)em.createQuery("SELECT COUNT(r) FROM RenameMe r").getSingleResult();
-            return renameMeCount;
-        }finally{  
+            TypedQuery<Car> query = em.createQuery("SELECT c FROM Car c", Car.class);
+            cars = query.getResultList();
+            return cars;
+        }finally{
             em.close();
         }
-        
     }
-
 }
