@@ -23,10 +23,14 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
+<<<<<<< HEAD:src/test/java/rest/JokeRessourceTest.java
 
 
 
 public class JokeRessourceTest {
+=======
+public class MemberResourceTest {
+>>>>>>> Member dto, entity, facade, rest, test: getAllTest:src/test/java/rest/MemberResourceTest.java
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
