@@ -26,7 +26,8 @@ import org.junit.jupiter.api.Test;
 
 
 
-public class MemberResourceTest {
+
+public class JokeRessourceTest {
 
 
     private static final int SERVER_PORT = 7777;
@@ -79,14 +80,14 @@ public class MemberResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        Member m = new Member("Abed", "cph-ab123", "Breaking Bad");
-        Member m1 = new Member("Ali", "cph-cd234", "Fresh Prince");
-        Member m2 = new Member("Cecilie", "cph-ef345", "Friends");
-        Member m3 = new Member("Rasmus", "cph-gh456", "The Simpsons");
+        new Member("Abed", "cph-ab123", "Breaking Bad");
+        new Member("Ali", "cph-cd234", "Fresh Prince");
+        new Member("Cecilie", "cph-ef345", "Friends");
+        new Member("Rasmus", "cph-gh456", "The Simpsons");
         try {
             em.getTransaction().begin();
             em.createQuery("DELETE from Member").executeUpdate();
-            em.persist(m);
+            em.persist(m1);
             em.persist(m2);
             em.persist(m3);
             em.persist(m4);
