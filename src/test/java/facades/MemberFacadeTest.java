@@ -71,7 +71,7 @@ public class MemberFacadeTest {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.createQuery("DELETE FROM Member m").executeUpdate();
-        em.createNativeQuery("ALTER TABLE `MOVIE` AUTO_INCREMENT = 1").executeUpdate();
+        em.createNativeQuery("ALTER TABLE `MEMBER` AUTO_INCREMENT = 1").executeUpdate();
         em.getTransaction().commit();
     }
     
