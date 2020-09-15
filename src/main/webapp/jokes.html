@@ -13,21 +13,21 @@ and open the template in the editor.
     </head>
     <body>
 
-        <table id="jokeTable" class="table">
-        </table>
+        <div id="jokeTable">
+        </div>
 
         <hr>
 
         <form action="#">
             <label for="JokeId">Write JokeId: </label>
-            <input type="text">
+            <input type="text" id="inputId">
             <button type="button" id="fetchJoke" class="btn btn-light">Fetch</button>
             <br>
             <br>
             <button type="button" id="randomJoke" class="btn btn-light">Get random joke</button>
-             
-      
-        </form>
 
+
+        </form>
+        <script src="jokeFunctionality.js" type="text/javascript"></script>
     </body>
 </html>
