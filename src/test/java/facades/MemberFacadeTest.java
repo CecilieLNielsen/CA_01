@@ -1,7 +1,9 @@
 package facades;
 
+import dtos.MemberDTO;
 import utils.EMF_Creator;
-import entities.RenameMe;
+import entities.Member;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -13,18 +15,27 @@ import org.junit.jupiter.api.Test;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class FacadeExampleTest {
+public class MemberFacadeTest {
 
     private static EntityManagerFactory emf;
-    private static FacadeExample facade;
+    private static MemberFacade facade;
+    
+    private Member m1;
+    private Member m2;
+    private Member m3;
+    private Member m4;
 
-    public FacadeExampleTest() {
+    public MemberFacadeTest() {
     }
 
     @BeforeAll
     public static void setUpClass() {
        emf = EMF_Creator.createEntityManagerFactoryForTest();
-       facade = FacadeExample.getFacadeExample(emf);
+       facade = MemberFacade.getMemberFacade(emf);
+       EntityManager em = emf.createEntityManager();
+       em.getTransaction().begin();
+       em.createQuery("DELETE FROM Member m").executeUpdate();
+       em.createNativeQuery("ALTER TABLE `MEMBER` AUTO_INCREMENT = 1").executeUpdate();
     }
 
     @AfterAll
@@ -37,12 +48,17 @@ public class FacadeExampleTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
+        new Member("Abed", "cph-ab123", "Breaking Bad");
+        new Member("Ali", "cph-cd234", "Fresh Prince");
+        new Member("Cecilie", "cph-ef345", "Friends");
+        new Member("Rasmus", "cph-gh456", "The Simpsons");
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(new RenameMe("Some txt", "More text"));
-            em.persist(new RenameMe("aaa", "bbb"));
-
+            em.createQuery("DELETE from Member").executeUpdate();
+            em.persist(m1);
+            em.persist(m2);
+            em.persist(m3);
+            em.persist(m4);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -52,12 +68,23 @@ public class FacadeExampleTest {
     @AfterEach
     public void tearDown() {
 //        Remove any data after each test was run
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Member m").executeUpdate();
+        em.createNativeQuery("ALTER TABLE `MOVIE` AUTO_INCREMENT = 1").executeUpdate();
+        em.getTransaction().commit();
+    }
+    
+    @Test
+    public void testGetAllMembers(){
+        List<MemberDTO> result = facade.getAllMembers();
+        assertEquals(4, result.size());
     }
 
     // TODO: Delete or change this method 
-    @Test
+/*    @Test
     public void testAFacadeMethod() {
         assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
     }
-
+*/
 }
