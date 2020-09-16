@@ -63,7 +63,7 @@ public class JokeFacade {
          try {
              TypedQuery<Joke> query = em.createQuery("SELECT j From Joke j", Joke.class);
              List<Joke> jokes = query.getResultList();
-             int random = rand.nextInt(jokes.size() - 1);
+             int random = rand.nextInt(jokes.size());
              return new JokeDTO(jokes.get(random));
          } finally {
              em.close();
