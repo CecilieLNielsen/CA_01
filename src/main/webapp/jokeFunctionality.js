@@ -10,6 +10,13 @@ function createJokesTable(data) {
 
 }
 
+
+function createJokeParagraph(data) {
+    console.log(data);
+    document.getElementById("fetchedJoke").innerHTML = data.the_joke;
+
+}
+
 function fetchJokes() {
     const url = "api/joke/all";
     fetch(url)
@@ -22,14 +29,14 @@ function fetchJokes() {
     const url = "api/joke/" + jokeID;
     fetch(url)
         .then(res => res.json())
-        .then(data => createJokesTable([data]));    
+        .then(data => createJokeParagraph(data));    
 }
 
 function fetchRandomJoke() {
     const url = "api/joke/random";
     fetch(url)
         .then(res => res.json())
-        .then(data => createJokesTable([data]));
+        .then(data => createJokeParagraph(data));
 }
 
 fetchJokes();
