@@ -5,7 +5,7 @@
  */
 package facades;
 
-import dto.JokeDto;
+import dtos.JokeDTO;
 import entities.Joke;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,25 +38,25 @@ public class JokeFacade {
         return emf.createEntityManager();
     }
 
-    public List<JokeDto> getAllJokes() {
+    public List<JokeDTO> getAllJokes() {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Joke> query = em.createQuery("SELECT j From Joke j", Joke.class);
         List<Joke> jokes = query.getResultList();
-        List<JokeDto> jDto = new ArrayList();
+        List<JokeDTO> jDto = new ArrayList();
         jokes.forEach((Joke joke) -> {
-            jDto.add(new JokeDto(joke));
+            jDto.add(new JokeDTO(joke));
         });
         return jDto;
 
     }
 
-    public JokeDto getJokeByID(int id) {
+    public JokeDTO getJokeByID(int id) {
         EntityManager em = emf.createEntityManager();
         Joke j = em.find(Joke.class, id);
-        return new JokeDto(j);
+        return new JokeDTO(j);
     }
 
-    public JokeDto getRandom() {
+    public JokeDTO getRandom() {
          EntityManager em = emf.createEntityManager();
          Random rand = new Random();
          
@@ -64,7 +64,7 @@ public class JokeFacade {
              TypedQuery<Joke> query = em.createQuery("SELECT j From Joke j", Joke.class);
              List<Joke> jokes = query.getResultList();
              int random = rand.nextInt(jokes.size() - 1);
-             return new JokeDto(jokes.get(random));
+             return new JokeDTO(jokes.get(random));
          } finally {
              em.close();
          }

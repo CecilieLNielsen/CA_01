@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dto;
+package dtos;
 
 import entities.Joke;
 
@@ -11,13 +11,13 @@ import entities.Joke;
  *
  * @author rh
  */
-public class JokeDto {
+public class JokeDTO {
 
     private String the_joke;
     private String type;
     private String reference;
 
-    public JokeDto(Joke joke) {
+    public JokeDTO(Joke joke) {
         this.the_joke = joke.getThe_joke();
         this.type = joke.getType();
         this.reference = joke.getReference();
