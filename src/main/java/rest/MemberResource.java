@@ -2,15 +2,12 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-<<<<<<< HEAD:src/main/java/rest/RenameMeResource.java
 import entities.Car;
 import utils.EMF_Creator;
-import facades.FacadeExample;
-=======
+import facades.CarFacade;
 import dtos.MemberDTO;
 import utils.EMF_Creator;
 import facades.MemberFacade;
->>>>>>> 8763a27dc5047e3346b93a8ab329657d9efc352a:src/main/java/rest/MemberResource.java
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
@@ -36,9 +33,6 @@ public class MemberResource {
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
-<<<<<<< HEAD:src/main/java/rest/RenameMeResource.java
-    @Path("cars")
-=======
     
     @Path("all")
     @GET
@@ -50,7 +44,6 @@ public class MemberResource {
     
     /*
     @Path("count")
->>>>>>> 8763a27dc5047e3346b93a8ab329657d9efc352a:src/main/java/rest/MemberResource.java
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getRenameMeCount() {

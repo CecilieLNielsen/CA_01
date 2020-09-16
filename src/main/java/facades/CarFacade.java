@@ -1,7 +1,7 @@
 package facades;
 
 import entities.Car;
-import entities.RenameMe;
+import entities.Car;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,23 +12,23 @@ import javax.persistence.TypedQuery;
  *
  * Rename Class to a relevant name Add add relevant facade methods
  */
-public class FacadeExample {
+public class CarFacade {
 
-    private static FacadeExample instance;
+    private static CarFacade instance;
     private static EntityManagerFactory emf;
     
     //Private Constructor to ensure Singleton
-    private FacadeExample() {}
+    private CarFacade() {}
     
     /**
      * 
      * @param _emf
      * @return an instance of this facade class.
      */
-    public static FacadeExample getFacadeExample(EntityManagerFactory _emf) {
+    public static CarFacade getCarFacade(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
-            instance = new FacadeExample();
+            instance = new CarFacade();
         }
         return instance;
     }

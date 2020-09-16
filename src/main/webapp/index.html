@@ -9,23 +9,4 @@
             
         </div>
     </body>
-    <script>
-        fetch('http://localhost:8080/jpareststarter/api/xxx/cars').then(response => response.json().then(data => {
-            var data = data;
-        }))
-        
-        var cars = data.map(function (element){
-        return '<li>' + element  + '</li>';
-        }); 
-
-        arrayOut.unshift('<ul>');
-        arrayOut.push('</ul>');
-        var t =  arrayOut.join('');
-        
-        var div = document.createElement('div');
-        
-        div.innerHTML = t;
-        
-        document.getElementById('new').appendChild(div);
-    </script>
 </html>

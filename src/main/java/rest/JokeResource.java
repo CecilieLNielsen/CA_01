@@ -77,7 +77,6 @@ public class JokeResource {
     }
     
     
-
     /**
      * PUT method for updating or creating an instance of JokeResource
      *
