@@ -43,7 +43,7 @@ public class CarResource {
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public String getAllCars() {
-       return GSON.toJson(FACADE.getAllJokes());
+       return GSON.toJson(FACADE.getAllCars());
     }
 
     /**

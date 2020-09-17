@@ -37,7 +37,7 @@ public class CarFacade {
         return emf.createEntityManager();
     }
     
-    public List<CarDTO> getAllJokes() {
+    public List<CarDTO> getAllCars() {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Car> query = em.createQuery("SELECT c From Car c", Car.class);
         List<Car> cars = query.getResultList();
