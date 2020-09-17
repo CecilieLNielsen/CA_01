@@ -69,8 +69,4 @@ public class JokeFacade {
              em.close();
          }
     }
-    
-    
-    
-
 }

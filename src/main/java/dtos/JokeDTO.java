@@ -21,11 +21,7 @@ public class JokeDTO {
         this.the_joke = joke.getThe_joke();
         this.type = joke.getType();
         this.reference = joke.getReference();
-    }
-    
-    
-    
-    
+    }    
 
     public String getThe_joke() {
         return the_joke;
