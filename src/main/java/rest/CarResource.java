@@ -45,7 +45,28 @@ public class CarResource {
     public String getAllCars() {
        return GSON.toJson(FACADE.getAllCars());
     }
-
+    
+    @GET
+    @Path("/carfilteredbyprice")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCarsFilteredByPrice() {
+       return GSON.toJson(FACADE.getCarsFilteredByPrice());
+    }
+    
+    @GET
+    @Path("/carfilteredbyname")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCarsFilteredByName() {
+       return GSON.toJson(FACADE.getCarsFilteredByName());
+    }
+    
+    @GET
+    @Path("/carfilteredbyyear")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCarsFilteredByYear() {
+       return GSON.toJson(FACADE.getCarsFilteredByYear());
+    }
+    
     /**
      * PUT method for updating or creating an instance of CarResource
      * @param content representation for the resource

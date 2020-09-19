@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+getCarsFilteredByYear();
 
 function createCarTable(data) {
     console.log(data);
@@ -14,10 +15,45 @@ function createCarTable(data) {
 }
 
 function getCars(){
-     const url = "api/Car/all";
+    const url = "api/Car/all";
     fetch(url)
         .then(res => res.json())
         .then(data => createCarTable(data));
 }
 
-getCars();
+function getCarsFilteredPrice () {
+    const url = "api/Car/carfilteredbyprice";
+    fetch(url)
+        .then(res => res.json())
+        .then(data => createCarTable(data));
+}
+
+function getCarsFilteredByName () {
+    const url = "api/Car/carfilteredbyname";
+    fetch(url)
+        .then(res => res.json())
+        .then(data => createCarTable(data));
+}
+
+function getCarsFilteredByYear () {
+    const url = "api/Car/carfilteredbyyear";
+    fetch(url)
+        .then(res => res.json())
+        .then(data => createCarTable(data));
+}
+
+document.getElementById("getCarsFilteredPrice").addEventListener("click", function (event) {
+    event.preventDefault();
+    getCarsFilteredPrice();
+});
+
+document.getElementById("getCarsFilteredByName").addEventListener("click", function (event) {
+    event.preventDefault();
+    getCarsFilteredByName();
+});
+
+document.getElementById("getCarsFilteredByYear").addEventListener("click", function (event) {
+    event.preventDefault();
+    getCarsFilteredByYear();
+});
+        

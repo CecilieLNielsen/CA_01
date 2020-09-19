@@ -41,7 +41,6 @@ function fetchRandomJoke() {
 
 fetchJokes();
 
-
 document.getElementById("fetchJoke").addEventListener("click", function (event) {
     event.preventDefault();
     fetchJoke();
