@@ -21,6 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import utils.EMF_Creator;
 
 /**
@@ -75,6 +76,20 @@ public class JokeResource {
     public String getRandom() {
         return GSON.toJson(FACADE.getRandom());
     }
+    
+    @GET
+    @Path("/bytype/{type}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByType(@PathParam("type") String type) {
+        
+        List<JokeDTO> jdto = FACADE.getByType(type);
+        if(jdto == null || jdto.isEmpty()){
+            return Response.status(404).entity("{\"Ups\": 404, \"msg\":\"We dont have that kind of jokes\"}").build();
+        }
+        return Response.ok(GSON.toJson(jdto)).build();
+    }
+    
+    
     
     
 
