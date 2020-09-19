@@ -69,4 +69,16 @@ public class JokeFacade {
              em.close();
          }
     }
+
+    public List<JokeDTO> getByType(String type) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Joke> query = em.createQuery("SELECT j FROM Joke j WHERE j.type LIKE :type", Joke.class);
+        query.setParameter("type", "%"+type+"%");
+        List<Joke> jokes = query.getResultList();
+        List<JokeDTO> jDto = new ArrayList();
+        jokes.forEach((Joke joke) -> {
+            jDto.add(new JokeDTO(joke));
+        });
+        return jDto;
+    }
 }

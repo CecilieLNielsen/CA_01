@@ -49,6 +49,7 @@ public class JokeFacadeTest {
             em.createQuery("DELETE from Joke").executeUpdate();
             em.persist(new Joke("I hate Russian dolls. They're so full of themselves.", "Bad", "Russia"));
             em.persist(new Joke("What do you tell actors to break a leg? Because every play has a cast!", "Bad", "Actors"));
+            em.persist(new Joke("What do you call a bus full of lawyers going over a cliff? A good start", "Good", "Law"));
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -68,7 +69,7 @@ public class JokeFacadeTest {
     @Test
     public void testGetAllJokes(){
         List <JokeDTO> result = facade.getAllJokes();
-        assertEquals(2, result.size());
+        assertEquals(3, result.size());
     }
     
     @Test
@@ -83,5 +84,11 @@ public class JokeFacadeTest {
         JokeDTO result = facade.getRandom();
         int jokeLength = 10;
         assertTrue(result.getThe_joke().length() > jokeLength);
+    }
+    
+    @Test 
+    public void testGetByType() {
+        List<JokeDTO> jDTO = facade.getByType("Bad");
+        assertEquals(2,jDTO.size(),"2 bad jokes");
     }
 }
